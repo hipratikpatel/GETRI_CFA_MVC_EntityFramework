@@ -17,5 +17,50 @@ namespace GETRI_CFA_MVC_EntityFramework.Controllers
             List<Employee> lstEmployee = iEmployeeRepository.FetchAllEmployees();
             return View(lstEmployee);
         }
+
+        public IActionResult Details(int id)
+        {
+            Employee employee = iEmployeeRepository.FetchEmployeeById(id);
+            return View(employee);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            var result = this.iEmployeeRepository.InsertEmployee(employee);
+            return View(result);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Employee employee = iEmployeeRepository.FetchEmployeeById(id);
+            return View(employee);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Employee employee)
+        {
+            var result = this.iEmployeeRepository.UpdateEmployee(employee);
+            return View(result);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Employee employee = iEmployeeRepository.FetchEmployeeById(id);
+            return View(employee);
+        }
+
+        [HttpPost,ActionName("Delete")]
+        public IActionResult ConfirmDelete(int id)
+        {
+            var result = iEmployeeRepository.DeleteEmployee(id);
+            return RedirectToAction("Index");
+
+        }
     }
 }

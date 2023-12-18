@@ -13,7 +13,7 @@ namespace GETRI_CFA_MVC_EntityFramework.Repository
         }
         public bool DeleteEmployee(int EmpId)
         {
-            var filterData = employeeDbContext.Employees.Where(x => x.EmpId == EmpId).FirstOrDefault();
+            Employee filterData = employeeDbContext.Employees.Find(EmpId);
             var result = employeeDbContext.Employees.Remove(filterData);
             employeeDbContext.SaveChanges();
             return result != null ? true : false;
