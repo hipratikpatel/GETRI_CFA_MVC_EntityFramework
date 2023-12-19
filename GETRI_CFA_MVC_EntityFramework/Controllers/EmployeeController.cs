@@ -24,6 +24,7 @@ namespace GETRI_CFA_MVC_EntityFramework.Controllers
             return View(employee);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -36,6 +37,7 @@ namespace GETRI_CFA_MVC_EntityFramework.Controllers
             return View(result);
         }
 
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             Employee employee = iEmployeeRepository.FetchEmployeeById(id);
@@ -49,6 +51,7 @@ namespace GETRI_CFA_MVC_EntityFramework.Controllers
             return View(result);
         }
 
+        [HttpGet]
         public IActionResult Delete(int id)
         {
             Employee employee = iEmployeeRepository.FetchEmployeeById(id);
@@ -60,7 +63,6 @@ namespace GETRI_CFA_MVC_EntityFramework.Controllers
         {
             var result = iEmployeeRepository.DeleteEmployee(id);
             return RedirectToAction("Index");
-
         }
     }
 }
